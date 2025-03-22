@@ -7,7 +7,7 @@ import SignIn from "./Pages/Authentication/Login";
 import PasswordReset from "./Pages/Authentication/PasswordReset";
 import Logout from "./Pages/Authentication/Logout";
 import NotFound from "./Pages/NotFound";
-import ForgotPassword from "./pages/Authentication/ForgotPassword";
+import ForgotPassword from "./Pages/Authentication/ForgotPassword";
 import Contact from "./Pages/Contact";
 import AdminDashboard from "./Components/Admin/AdminDashboard";
 import UserDashboard from "./Components/Users/UserDashboard";
