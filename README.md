@@ -50,5 +50,5 @@ https://saferider.vercel.app/
 
 ### Clone the Repository
 ```bash
-git clone https://github.com/your-username/saferider.git
+https://github.com/SPraveenKumar-spk/SafeRider.git
 cd saferider
