@@ -2,7 +2,8 @@
 
 SafeRider is an intelligent system that automates the process of detecting helmet violations, identifying vehicles through license plate recognition, and issuing fines. It leverages **YOLOv8 for helmet detection**, **OCR for license plate recognition**, and **OpenCV for image processing**. The system retrieves vehicle information from a central database, issues fines, and sends email notifications to offenders.
 
-![image](https://github.com/user-attachments/assets/110b208f-3bb1-4db0-a871-5e04721bc95d)
+![Screenshot 2025-03-22 152609](https://github.com/user-attachments/assets/a5925f56-6429-4662-bcf4-915ff14f20d3)
+
 
 # Checkout application
 https://saferider.vercel.app/
