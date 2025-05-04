@@ -19,6 +19,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<ProtectedRoutes />}>
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/user" element={<UserDashboard />} />
+            <Route path="/userprofile" element={<UserProfile />} />
             <Route path="/logout" element={<Logout />} />
           </Route>
 
@@ -27,9 +30,6 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/register" element={<Signup />} />
           <Route path="/login" element={<SignIn />} />
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/user" element={<UserDashboard />} />
-          <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/resetpassword" element={<PasswordReset />} />
           <Route path="*" element={<NotFound />} />

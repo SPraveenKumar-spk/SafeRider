@@ -1,0 +1,6 @@
+2025-05-04 15:02:34,475 ERROR: Failed to load config: object of type 'NoneType' has no len()
+2025-05-04 15:04:28,662 ERROR: Failed to initialize extensions: Either 'SQLALCHEMY_DATABASE_URI' or 'SQLALCHEMY_BINDS' must be set.
+2025-05-04 15:09:20,025 ERROR: Failed to load config: object of type 'NoneType' has no len()
+2025-05-04 15:12:21,771 DEBUG: Loading config from: C:\Users\prashu.PRASANTH\Desktop\Praveen\SafeRider\backend\app\config.py
+2025-05-04 15:12:21,771 DEBUG: Loaded config: SECRET_KEY=None, JWT_SECRET_KEY=None, SQLALCHEMY_DATABASE_URI=None, MAIL_SERVER=None, MAIL_USERNAME=None, MAIL_DEFAULT_SENDER=None
+2025-05-04 15:12:21,771 ERROR: Failed to initialize extensions: Either 'SQLALCHEMY_DATABASE_URI' or 'SQLALCHEMY_BINDS' must be set.

@@ -44,7 +44,6 @@ function Login() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("responses", data.role);
         storeToken(data.access_token);
         storeRole(data.role);
         setUser({

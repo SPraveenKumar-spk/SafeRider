@@ -1,28 +1,28 @@
-// import { Navigate, Outlet } from "react-router-dom";
-// import { useAuth } from "../store/auth";
-
-// function ProtectedRoutes() {
-//   let { isLoggedIn } = useAuth();
-//   return isLoggedIn ? <Outlet /> : <Navigate to="/login" />;
-// }
-
-// export default ProtectedRoutes;
-
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../Store/Auth";
 
-const ProtectedRoute = ({ element: Element, allowedRoles }) => {
-  const { isLoggedIn, userRole } = useAuth();
+function ProtectedRoutes() {
+  let { isLoggedIn } = useAuth();
+  return isLoggedIn ? <Outlet /> : <Navigate to="/login" />;
+}
 
-  if (!isLoggedIn) {
-    return <Navigate to="/login" replace />;
-  }
+export default ProtectedRoutes;
 
-  if (!allowedRoles.includes(userRole)) {
-    return <Navigate to={`/${userRole}`} replace />; // Redirect to respective dashboard
-  }
+// import { Navigate } from "react-router-dom";
+// import { useAuth } from "../Store/Auth";
 
-  return <Element />;
-};
+// const ProtectedRoute = ({ element: Element, allowedRoles }) => {
+//   const { isLoggedIn, userRole } = useAuth();
 
-export default ProtectedRoute;
+//   if (!isLoggedIn) {
+//     return <Navigate to="/login" replace />;
+//   }
+
+//   if (!allowedRoles.includes(userRole)) {
+//     return <Navigate to={`/${userRole}`} replace />;
+//   }
+
+//   return <Element />;
+// };
+
+// export default ProtectedRoute;
