@@ -40,18 +40,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* <Route
-          path="/admin"
-          element={
-            <ProtectedRoute element={AdminDashboard} allowedRoles={["admin"]} />
-          }
-        />
-        <Route
-          path="/user"
-          element={
-            <ProtectedRoute element={UserDashboard} allowedRoles={["user"]} />
-          }
-        /> */
-}

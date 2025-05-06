@@ -105,7 +105,11 @@ def create_detection():
             vehicle = Vehicle.query.filter_by(plate_number=plate_number).first()
             if not vehicle:
                 logger.error(f"Vehicle not found for plate: {plate_number}")
-                return jsonify({'error': 'Vehicle not found'}), 404
+                return jsonify({'msg': 'Helmet detected happy ride , stay safe'}), 404
+
+            if helmet_detected:
+                logger.info(f"Helmet detected for plate: {plate_number}")
+                return jsonify({'msg': 'Helmet detected happy ride , stay safe'}), 200
 
             detection = Violation(
                 plate_number=plate_number,
@@ -117,43 +121,41 @@ def create_detection():
             )
             db.session.add(detection)
 
-            if not helmet_detected:
-                user = User.query.filter_by(id=vehicle.user_id).first()
+            user = User.query.filter_by(id=vehicle.user_id).first()
+            if not user:
+                user = User.query.filter_by(email=vehicle.email).first()
                 if not user:
-                    user = User.query.filter_by(email=vehicle.email).first()
-                    if not user:
-                        user = User(
-                            name=vehicle.owner_name,
-                            email=vehicle.email,
-                            role='user'
-                        )
-                        user.set_password("123")
-                        db.session.add(user)
-                        db.session.flush()
+                    user = User(
+                        name=vehicle.owner_name,
+                        email=vehicle.email,
+                        role='user'
+                    )
+                    user.set_password("123")
+                    db.session.add(user)
+                    db.session.flush()
 
-                fine = Fine(
-                    plate_number=plate_number,
-                    violation_type='No helmet detected',
-                    fine_amount=100.0,
-                    status='pending',
-                    user_id=user.id,
-                    detection_id=detection.id,
-                    image_data=image_data,
-                    image_mime_type=image_mime_type,
-                    date_issued=datetime.utcnow()
-                )
-                db.session.add(fine)
+            fine = Fine(
+                plate_number=plate_number,
+                violation_type='No helmet detected',
+                fine_amount=100.0,
+                status='pending',
+                user_id=user.id,
+                detection_id=detection.id,
+                image_data=image_data,
+                image_mime_type=image_mime_type,
+                date_issued=datetime.utcnow()
+            )
+            db.session.add(fine)
 
             try:
                 db.session.commit()
                 logger.info(f"Detection created: plate={plate_number}, helmet_detected={helmet_detected}")
                 
-                if not helmet_detected and user:
-                    try:
-                        send_fine_notification(user.email, fine)
-                        logger.info(f"Email notification queued for {user.email}")
-                    except Exception as e:
-                        logger.error(f"Failed to send email notification to {user.email}: {str(e)}")
+                try:
+                    send_fine_notification(user.email, fine)
+                    logger.info(f"Email notification queued for {user.email}")
+                except Exception as e:
+                    logger.error(f"Failed to send email notification to {user.email}: {str(e)}")
                 
                 return jsonify({
                     'detection': detection.to_dict(),

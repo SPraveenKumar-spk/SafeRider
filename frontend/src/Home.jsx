@@ -159,7 +159,6 @@ function Home() {
           />
         </div>
       </section>
-
       <section className="bg-gray-50 py-5 md:py-10 px-6 md:px-12 lg:px-24 text-gray-900">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-2xl md:text-4xl font-bold mb-6 text-indigo-700">
